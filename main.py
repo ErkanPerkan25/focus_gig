@@ -2,9 +2,10 @@ import time as tm
 import tkinter as tk
 from tkinter import messagebox
 
-alarm_file = "jarvis_alarm.mp3"
+# alarm_file = "jarvis_alarm.mp3"
 
 
+# Time function
 def startTimer():
     try:
         time = int(time_min.get())*60 + int(time_sec.get())
@@ -27,11 +28,15 @@ root = tk.Tk()
 root.title("Timer App")
 root.geometry("400x300")
 
-setTime_label = tk.Label(root, text="Set timer:")
+setTime_label = tk.Label(root, font=("Arial", 18), text="Set timer:")
 setTime_label.pack(pady=5, anchor=tk.N)
 
 frame = tk.Frame(root)
+
+desc_label = tk.Label(frame, font=("Arial", 18), text="Min  Sec")
+desc_label.pack()
 frame.pack(expand=True)
+
 
 time_min = tk.StringVar()
 time_sec = tk.StringVar()
@@ -39,19 +44,38 @@ time_sec = tk.StringVar()
 time_min.set("0")
 time_sec.set("0")
 
-entry_min = tk.Entry(frame, width=2, textvariable=time_min)
-entry_sec = tk.Entry(frame, width=2, textvariable=time_sec)
+entry_min = tk.Entry(
+    frame, width=2,
+    font=("Arial", 24),
+    justify="center",
+    textvariable=time_min
+)
+
+entry_sec = tk.Entry(
+    frame, width=2,
+    font=("Arial", 24),
+    justify="center",
+    textvariable=time_sec
+)
 entry_min.pack(side=tk.LEFT, padx=3)
 entry_sec.pack(side=tk.LEFT, padx=3)
 
 submit_btn = tk.Button(
     root,
+    font=("Arial", 18),
     text="Start timer",
     pady=5,
     command=startTimer
 )
 
-button = tk.Button(root, text="Exit", width=10, command=root.destroy)
+button = tk.Button(
+    root,
+    font=("Arial", 18),
+    text="Exit",
+    width=10,
+    command=root.destroy
+)
+
 submit_btn.pack(pady=5)
 button.pack(pady=5)
 
